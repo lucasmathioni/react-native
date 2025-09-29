@@ -6,7 +6,7 @@ import {
 
 import { styles } from './styles';
 
-function App() {
+export function App() {
   const isDarkMode = useColorScheme() === 'dark';
   const safeAreaInsets = useSafeAreaInsets();
 
@@ -29,5 +29,3 @@ function App() {
     </SafeAreaProvider>
   );
 }
-
-export default App;
