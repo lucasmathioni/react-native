@@ -15,6 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: react-native
   name: gradle
 spec:
   selector:
