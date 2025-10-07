@@ -4,7 +4,6 @@ metadata:
   namespace: react-native
   name: manager
   labels:
-    app: react-native
     role: manager
     platform.kubernetes: 'true'
 ---
@@ -14,7 +13,6 @@ metadata:
   namespace: react-native
   name: manager
   labels:
-    app: react-native
     role: manager
     platform.kubernetes: 'true'
 rules:
@@ -37,7 +35,6 @@ metadata:
   namespace: react-native
   name: manager
   labels:
-    app: react-native
     role: manager
     platform.kubernetes: 'true'
 subjects:
