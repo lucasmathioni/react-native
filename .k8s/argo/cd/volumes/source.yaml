@@ -4,7 +4,7 @@ metadata:
   namespace: react-native
   name: react-native
   labels:
-    app: source
+    app: react-native
     platform.android: 'true'
     platform.ios: 'true'
 spec:
@@ -23,14 +23,14 @@ metadata:
   namespace: react-native
   name: react-native
   labels:
-    app: source
+    app: react-native
     platform.android: 'true'
     platform.ios: 'true'
 spec:
   storageClassName: react-native
   selector:
     matchLabels:
-      app: source
+      app: react-native
   accessModes:
     - ReadWriteOnce
   resources:

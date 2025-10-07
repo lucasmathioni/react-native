@@ -4,7 +4,7 @@ metadata:
   namespace: react-native
   name: gradle
   labels:
-    app: gradle
+    app: react-native
     platform.android: 'true'
 spec:
   storageClassName: gradle
@@ -22,11 +22,12 @@ metadata:
   namespace: react-native
   name: gradle
   labels:
+    app: react-native
     platform.android: 'true'
 spec:
   selector:
     matchLabels:
-      app: gradle
+      app: react-native
   storageClassName: gradle
   accessModes:
     - ReadWriteOnce
