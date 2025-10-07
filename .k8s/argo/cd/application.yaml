@@ -14,8 +14,8 @@ spec:
     repoURL: https://github.com/lucasmathioni/react-native
     path: .k8s/argo/cd
     targetRevision: main
-    kustomize: {}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+      enabled: true
