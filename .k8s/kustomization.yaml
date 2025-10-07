@@ -9,5 +9,6 @@ resources:
   - resources/accounts/manager.yaml
 
 # namePrefix: dev-
+namespace: react-native
 commonLabels:
   app: react-native
