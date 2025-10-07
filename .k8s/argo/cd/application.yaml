@@ -12,7 +12,7 @@ spec:
     namespace: react-native
   source:
     repoURL: https://github.com/lucasmathioni/react-native
-    path: .k8s/argo/cd
+    path: .k8s
     targetRevision: main
   syncPolicy:
     automated:

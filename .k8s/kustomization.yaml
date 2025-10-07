@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - resources/namespace.yaml
+  - resources/volumes/source.yaml
+  - resources/volumes/gradle.yaml
+  - resources/accounts/admin.yaml
+  - resources/accounts/manager.yaml
+
+# namePrefix: dev-
+namespace: react-native
+commonLabels:
+  app: react-native
