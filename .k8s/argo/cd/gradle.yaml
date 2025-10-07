@@ -3,8 +3,7 @@ kind: PersistentVolume
 metadata:
   name: gradle
   labels:
-    app: react-native
-    platform.android: 'true'
+    app: android
 spec:
   storageClassName: gradle
   persistentVolumeReclaimPolicy: Retain
@@ -21,12 +20,11 @@ metadata:
   namespace: react-native
   name: gradle
   labels:
-    app: react-native
-    platform.android: 'true'
+    app: android
 spec:
   selector:
     matchLabels:
-      app: react-native
+      app: android
   storageClassName: gradle
   accessModes:
     - ReadWriteOnce

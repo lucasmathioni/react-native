@@ -4,8 +4,6 @@ metadata:
   name: react-native
   labels:
     app: react-native
-    platform.android: 'true'
-    platform.ios: 'true'
 spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: react-native
@@ -23,8 +21,6 @@ metadata:
   name: react-native
   labels:
     app: react-native
-    platform.android: 'true'
-    platform.ios: 'true'
 spec:
   storageClassName: react-native
   selector:
