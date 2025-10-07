@@ -17,9 +17,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: gradle
 spec:
-  selector:
-    matchLabels:
-      app: android
   storageClassName: gradle
   accessModes:
     - ReadWriteOnce

@@ -18,9 +18,6 @@ metadata:
   name: react-native
 spec:
   storageClassName: react-native
-  selector:
-    matchLabels:
-      app: react-native
   accessModes:
     - ReadWriteOnce
   resources:
