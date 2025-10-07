@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: react-native
+  name: manager
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: react-native
+  name: manager
+rules:
+  - apiGroups: ['', 'apps', 'batch', 'extensions', 'networking.k8s.io']
+    resources: ['configmaps', 'secrets', 'services', 'pods', 'deployments']
+    verbs: ['get', 'list', 'watch', 'create', 'update', 'patch', 'delete']
+  - apiGroups: ['argoproj.io']
+    resources:
+      [
+        'workflows',
+        'workflowtemplates',
+        'workflowtaskresults',
+        'workflowtasksets',
+      ]
+    verbs: ['get', 'list', 'watch', 'create', 'update', 'patch', 'delete']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: react-native
+  name: manager
+subjects:
+  - kind: ServiceAccount
+    name: manager
+    namespace: react-native
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: manager

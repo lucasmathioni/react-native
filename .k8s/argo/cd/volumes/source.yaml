@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: react-native
+  name: react-native
+  labels:
+    app: source
+    platform.android: 'true'
+    platform.ios: 'true'
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: react-native
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/react-native
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: react-native
+  name: react-native
+  labels:
+    app: source
+    platform.android: 'true'
+    platform.ios: 'true'
+spec:
+  storageClassName: react-native
+  selector:
+    matchLabels:
+      app: source
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
