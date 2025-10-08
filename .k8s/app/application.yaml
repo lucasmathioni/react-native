@@ -14,6 +14,7 @@ spec:
     repoURL: https://github.com/lucasmathioni/react-native
     path: .k8s/app
     targetRevision: main
+    kustomize: {}
   syncPolicy:
     automated:
       prune: true

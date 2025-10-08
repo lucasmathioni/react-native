@@ -2,18 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argo
-  name: react-native
+  name: react-native-resources
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: react-native
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo
+    namespace: ''
   source:
     repoURL: https://github.com/lucasmathioni/react-native
     path: .k8s/cluster
     targetRevision: main
+    kustomize: {}
   syncPolicy:
     automated:
       prune: true
