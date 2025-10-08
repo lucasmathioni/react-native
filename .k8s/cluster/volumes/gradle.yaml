@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gradle
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: gradle
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /opt/.gradle
+  accessModes:
+    - ReadWriteOnce

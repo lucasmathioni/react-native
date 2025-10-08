@@ -7,20 +7,7 @@ spec:
   storageClassName: react-native
   capacity:
     storage: 20Gi
-  accessModes:
-    - ReadWriteOnce
   hostPath:
     path: /data/react-native
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  namespace: react-native
-  name: react-native
-spec:
-  storageClassName: react-native
   accessModes:
     - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
