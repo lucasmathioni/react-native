@@ -1,7 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  namespace: argo
   name: react-native
 spec:
   clusterResourceWhitelist:
