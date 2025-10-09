@@ -10,4 +10,4 @@ namespace: argo
 labels:
   - includeSelectors: true
     pairs:
-      app: react-native
+      app: react-native-argo
