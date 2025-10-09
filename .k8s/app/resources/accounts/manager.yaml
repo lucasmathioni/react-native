@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
+  namespace: react-native
   name: manager
   labels:
     role: manager
@@ -8,6 +9,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
+  namespace: react-native
   name: manager
   labels:
     role: manager
@@ -28,12 +30,14 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
+  namespace: react-native
   name: manager
   labels:
     role: manager
 subjects:
   - kind: ServiceAccount
     name: manager
+    namespace: react-native
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
