@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  namespace: argo
+  name: react-native
+spec:
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+      jsonPointers:
+        - /metadata/annotations/argocd.argoproj.io~1tracking-id
+    - group: ''
+      kind: PersistentVolume
+      jsonPointers:
+        - /metadata/annotations/argocd.argoproj.io~1tracking-id
+  description: Projeto do react-native usando k8s, argo-workflow e arco-cd.
+  destinations:
+    - name: '*'
+      namespace: '*'
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/lucasmathioni/react-native
+status: {}
