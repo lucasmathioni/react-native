@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: react-native-infra
+  name: react-native-cluster
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
