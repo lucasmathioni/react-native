@@ -6,5 +6,7 @@ resources:
 
 namespace: dev
 namePrefix: dev-
-commonLabels:
-  environment: dev
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: dev

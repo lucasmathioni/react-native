@@ -6,5 +6,7 @@ resources:
 
 namespace: uat
 namePrefix: uat-
-commonLabels:
-  environment: uat
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: uat

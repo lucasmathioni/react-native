@@ -6,5 +6,7 @@ resources:
 
 namespace: prod
 namePrefix: prod-
-commonLabels:
-  environment: prod
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: prod
