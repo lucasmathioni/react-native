@@ -1,20 +1,16 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  namespace: react-native
   name: manager
   labels:
     role: manager
-    platform.kubernetes: 'true'
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: react-native
   name: manager
   labels:
     role: manager
-    platform.kubernetes: 'true'
 rules:
   - apiGroups: ['', 'apps', 'batch', 'extensions', 'networking.k8s.io']
     resources: ['configmaps', 'secrets', 'services', 'pods', 'deployments']
@@ -32,15 +28,12 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  namespace: react-native
   name: manager
   labels:
     role: manager
-    platform.kubernetes: 'true'
 subjects:
   - kind: ServiceAccount
     name: manager
-    namespace: react-native
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role

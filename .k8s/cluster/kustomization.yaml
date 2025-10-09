@@ -6,7 +6,6 @@ resources:
   - resources/volumes/react-native.yaml
   - resources/volumes/gradle.yaml
 
-# namePrefix: dev-
 labels:
   - includeSelectors: true
     pairs:

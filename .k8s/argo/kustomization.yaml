@@ -6,9 +6,8 @@ resources:
   - resources/applications/react-native-infra.yaml
   - resources/applications/react-native-app.yaml
 
-# namePrefix: dev-
 namespace: argo
 labels:
   - includeSelectors: true
     pairs:
-      app: react-native-argo
+      app: react-native
