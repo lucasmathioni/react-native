@@ -8,6 +8,7 @@ resources:
   - resources/accounts/admin.yaml
   - resources/accounts/manager.yaml
 
+namespace: react-native
 labels:
   - includeSelectors: true
     pairs:

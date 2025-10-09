@@ -6,3 +6,7 @@ resources:
   - resources/application.yaml
 
 namespace: argo
+labels:
+  - includeSelectors: true
+    pairs:
+      app: react-native
