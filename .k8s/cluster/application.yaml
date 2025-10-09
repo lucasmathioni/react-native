@@ -9,7 +9,6 @@ spec:
   project: react-native
   destination:
     server: https://kubernetes.default.svc
-    namespace: ''
   source:
     repoURL: https://github.com/lucasmathioni/react-native
     path: .k8s/cluster
