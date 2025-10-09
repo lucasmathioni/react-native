@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: react-native
+  name: react-native-argo
 spec:
-  project: react-native
+  project: argo
   destination:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/lucasmathioni/react-native
-    path: .k8s/app
+    path: .k8s/argo
     targetRevision: main
   syncPolicy:
     automated:

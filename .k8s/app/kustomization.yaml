@@ -2,6 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - resources/project.yaml
+  - resources/application.yaml
   - resources/namespace.yaml
   - resources/volumes/react-native.yaml
   - resources/volumes/gradle.yaml
