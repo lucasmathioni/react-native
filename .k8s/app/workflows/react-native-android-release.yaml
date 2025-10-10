@@ -20,3 +20,5 @@ spec:
             templateRef:
               name: android-assemble-release
               template: main
+  dependsOn:
+    - react-native-init
