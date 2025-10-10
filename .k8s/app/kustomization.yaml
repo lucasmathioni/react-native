@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - workflows/react-native-init.yaml
-  - workflows/react-native-android-init.yaml
   - workflows/react-native-android-release.yaml
 
 namespace: react-native

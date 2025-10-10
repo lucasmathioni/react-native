@@ -22,3 +22,11 @@ spec:
             templateRef:
               name: yarn-install
               template: main
+        - - name: android-init
+            templateRef:
+              name: android-init
+              template: main
+        - - name: android-clean
+            templateRef:
+              name: android-clean
+              template: main
