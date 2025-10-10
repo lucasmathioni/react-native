@@ -9,6 +9,10 @@ metadata:
 spec:
   serviceAccountName: manager
   entrypoint: main
+  arguments:
+    parameters:
+      - name: repository-url
+        value: https://github.com/lucasmathioni/react-native.git
   templates:
     - name: main
       steps:
