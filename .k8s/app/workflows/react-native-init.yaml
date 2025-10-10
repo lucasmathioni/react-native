@@ -4,8 +4,6 @@ metadata:
   name: react-native-init
   generateName: react-native-init-
   annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
     workflows.argoproj.io/title: 'React Native Init'
     workflows.argoproj.io/description: 'Clona o repositório e instala dependências com yarn.'
 spec:
