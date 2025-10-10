@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: react-native-cd
 spec:
-  project: react-native
+  project: argo
   destination:
     server: https://kubernetes.default.svc
   source:
