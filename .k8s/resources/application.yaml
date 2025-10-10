@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/lucasmathioni/react-native
-    path: .k8s/app
+    path: .k8s
     targetRevision: main
   syncPolicy:
     automated:
