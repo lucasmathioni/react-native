@@ -9,10 +9,6 @@ metadata:
 spec:
   serviceAccountName: manager
   entrypoint: main
-  dependencies:
-    - name: react-native-init
-      eventSourceName: argo-events
-      eventName: workflow-finished
   templates:
     - name: main
       steps:
