@@ -1,6 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  name: react-native-android-init
   generateName: react-native-init-
   annotations:
     argocd.argoproj.io/hook: PostSync

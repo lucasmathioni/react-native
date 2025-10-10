@@ -1,6 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  name: react-native-android-init
   generateName: react-native-android-init-
   annotations:
     workflows.argoproj.io/title: 'React Native Android Init'
