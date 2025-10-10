@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: react-native
+  name: github-clone
+  annotations:
+    workflows.argoproj.io/title: '**Github Clone**'
+    workflows.argoproj.io/description: |
+      Clona o repositório definido no argumento `repository-url` na pasta `/source` do volume.
+  labels:
+    app: github
+spec:
+  workflowMetadata:
+    annotations:
+      workflows.argoproj.io/title: '**Github Clone**'
+      workflows.argoproj.io/description: |
+        Clona o repositório definido no argumento `repository-url` na pasta `/source` do volume.
+    labels:
+      app: github
+  serviceAccountName: manager
+  entrypoint: main
+  arguments:
+    parameters:
+      - name: repository-url
+        value: https://github.com/lucasmathioni/react-native.git
+  templates:
+    - name: main
+      annotations:
+        workflows.argoproj.io/display-name: clone
+      inputs:
+        parameters:
+          - name: repository-url
+      container:
+        image: mathone/git:latest
+        imagePullPolicy: Never
+        command: ['sh', '-c']
+        args:
+          - |
+            if [ -d /source ] && [ "$(ls -A /source)" ]; then
+              echo "💬  Pasta '/source' já existe e contém arquivos, não será feito clone."
+            else
+              echo "💬  Clonando repositório '${{inputs.parameters.repository-url}}' em '/source'..."
+              git clone {{inputs.parameters.repository-url}} /source
+              echo "💬  Repositório clonado."
+            fi
+        volumeMounts:
+          - name: react-native
+            mountPath: /source
+            subPath: source
+      volumes:
+        - name: react-native
+          persistentVolumeClaim:
+            claimName: react-native

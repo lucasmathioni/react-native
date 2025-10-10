@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: react-native
+  name: android-gradlew-clean
+  annotations:
+    workflows.argoproj.io/title: '**Android Gradle Clean**'
+    workflows.argoproj.io/description: |
+      Executa o script `./gradlew clean`.
+  labels:
+    app: android
+spec:
+  workflowMetadata:
+    annotations:
+      workflows.argoproj.io/title: '**Android Gradle Clean**'
+      workflows.argoproj.io/description: |
+        Executa o script `./gradlew clean`.
+    labels:
+      app: android
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      annotations:
+        workflows.argoproj.io/display-name: gradlew-clean
+      container:
+        image: mathone/android:latest
+        imagePullPolicy: Never
+        workingDir: /source/android
+        command: ['sh', '-c']
+        args:
+          - |
+            echo "💬  Executando './gradlew clean'..."
+            ./gradlew clean || exit 1
+            echo "✅  './gradlew clean' finalizado."
+        volumeMounts:
+          - name: react-native
+            mountPath: /source
+            subPath: source
+          - name: gradle
+            mountPath: /opt/.gradle
+      volumes:
+        - name: react-native
+          persistentVolumeClaim:
+            claimName: react-native
+        - name: gradle
+          persistentVolumeClaim:
+            claimName: gradle

@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: react-native
+  name: github-pull
+  annotations:
+    workflows.argoproj.io/title: '**Github Pull**'
+    workflows.argoproj.io/description: |
+      Atualiza o source do repositório configurado no volume.
+  labels:
+    app: github
+spec:
+  workflowMetadata:
+    annotations:
+      workflows.argoproj.io/title: '**Github Pull**'
+      workflows.argoproj.io/description: |
+        Atualiza o source do repositório configurado no volume.
+    labels:
+      app: github
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      annotations:
+        workflows.argoproj.io/display-name: pull
+      container:
+        image: mathone/git:latest
+        imagePullPolicy: Never
+        workingDir: /source
+        command: ['sh', '-c']
+        args:
+          - |
+            if [ -d .git ] && [ "$(ls -A .git)" ]; then
+              echo "💬  Atualizando repositório..."
+              git pull --rebase
+              echo "💬  Repositório atualizado."
+            else
+              echo "❗️  Github não configurado. Pull não executado."
+              exit 1
+            fi
+        volumeMounts:
+          - name: react-native
+            mountPath: /source
+            subPath: source
+      volumes:
+        - name: react-native
+          persistentVolumeClaim:
+            claimName: react-native

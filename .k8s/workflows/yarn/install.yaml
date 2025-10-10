@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: react-native
+  name: yarn-install
+  annotations:
+    workflows.argoproj.io/title: '**Yarn Install**'
+    workflows.argoproj.io/description: |
+      Instala os pacotes `NodeJS` utilizando `yarn`.
+  labels:
+    app: yarn
+spec:
+  workflowMetadata:
+    annotations:
+      workflows.argoproj.io/title: '**Yarn Install**'
+      workflows.argoproj.io/description: |
+        Instala os pacotes `NodeJS` utilizando `yarn`.
+    labels:
+      app: yarn
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      annotations:
+        workflows.argoproj.io/display-name: 'install'
+      container:
+        image: mathone/node:latest
+        imagePullPolicy: Never
+        workingDir: /source
+        command: ['sh', '-c']
+        args:
+          - |
+            echo "💬  Instalando dependências do Node..."
+            yarn install --frozen-lockfile
+            echo "💬  Instalação concluída."
+        volumeMounts:
+          - name: react-native
+            mountPath: /source
+            subPath: source
+      volumes:
+        - name: react-native
+          persistentVolumeClaim:
+            claimName: react-native

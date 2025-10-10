@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: react-native
+  name: android-gradlew-assemble-release
+  annotations:
+    workflows.argoproj.io/title: '**Android Gradlew Assemble Release**'
+    workflows.argoproj.io/description: |
+      Gera o `$VERSION.apk` através do `./gradlew assembleRelease`.
+  labels:
+    app: android
+spec:
+  workflowMetadata:
+    annotations:
+      workflows.argoproj.io/title: '**Android Gradlew Assemble Release**'
+      workflows.argoproj.io/description: |
+        Gera o `$VERSION.apk` através do `./gradlew assembleRelease`.
+    labels:
+      app: android
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      annotations:
+        workflows.argoproj.io/display-name: gradlew-assemble-release
+      container:
+        image: mathone/android:latest
+        imagePullPolicy: Never
+        workingDir: /source/android
+        command: ['sh', '-c']
+        args:
+          - |
+            echo "💬  Rodando assembleRelease..."
+            ./gradlew assembleRelease || exit 1
+            echo "✅  Build finalizada."
+
+            echo "💬  Localizando APK..."
+            APK_PATH=$(find app/build/outputs/apk -type f -name "*.apk" | head -n 1)
+            if [ -z "$APK_PATH" ]; then
+              echo "❗️  Nenhum APK encontrado!"
+              exit 1
+            fi
+            echo "✅  APK encontrado: $APK_PATH"
+
+            echo "💬  Copiando para /artifacts/app.apk..."
+            cp "$APK_PATH" /artifacts/app.apk
+            echo "✅  Artefato salvo em /artifacts/app.apk"
+        volumeMounts:
+          - name: react-native
+            mountPath: /source
+            subPath: source
+          - name: gradle
+            mountPath: /opt/.gradle
+          - name: react-native
+            mountPath: /artifacts
+            subPath: artifacts
+      volumes:
+        - name: react-native
+          persistentVolumeClaim:
+            claimName: react-native
+        - name: gradle
+          persistentVolumeClaim:
+            claimName: gradle
+      outputs:
+        artifacts:
+          - name: apk
+            path: /artifacts/app.apk
