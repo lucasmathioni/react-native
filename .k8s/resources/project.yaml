@@ -14,6 +14,9 @@ spec:
       namespace: ''
       server: https://kubernetes.default.svc
     - name: in-cluster
+      namespace: argo
+      server: https://kubernetes.default.svc
+    - name: in-cluster
       namespace: react-native
       server: https://kubernetes.default.svc
   sourceRepos:
