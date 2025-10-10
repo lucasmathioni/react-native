@@ -2,9 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   namespace: react-native
-  name: android-gradlew-assemble-release
+  name: android-assemble-release
   annotations:
-    workflows.argoproj.io/title: '**Android Gradlew Assemble Release**'
+    workflows.argoproj.io/title: '**Android Gradle Assemble Release**'
     workflows.argoproj.io/description: |
       Gera o `$VERSION.apk` através do `./gradlew assembleRelease`.
   labels:
@@ -12,7 +12,7 @@ metadata:
 spec:
   workflowMetadata:
     annotations:
-      workflows.argoproj.io/title: '**Android Gradlew Assemble Release**'
+      workflows.argoproj.io/title: '**Android Gradle Assemble Release**'
       workflows.argoproj.io/description: |
         Gera o `$VERSION.apk` através do `./gradlew assembleRelease`.
     labels:
@@ -22,7 +22,7 @@ spec:
   templates:
     - name: main
       annotations:
-        workflows.argoproj.io/display-name: gradlew-assemble-release
+        workflows.argoproj.io/display-name: gradle-assemble-release
       container:
         image: mathone/android:latest
         imagePullPolicy: Never

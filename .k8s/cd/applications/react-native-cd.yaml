@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: react-native-cd
+spec:
+  project: react-native
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/lucasmathioni/react-native
+    path: .k8s/cd
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true

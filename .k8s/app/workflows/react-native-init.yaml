@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: react-native-init-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    workflows.argoproj.io/title: 'React Native Init'
+    workflows.argoproj.io/description: 'Clona o repositório e instala dependências com yarn.'
+spec:
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      steps:
+        - - name: github-clone
+            templateRef:
+              name: github-clone
+              template: main
+        - - name: yarn-install
+            templateRef:
+              name: yarn-install
+              template: main

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: react-native-android-release-
+  annotations:
+    workflows.argoproj.io/title: 'React Native Android Release'
+    workflows.argoproj.io/description: 'Atualiza o código e gera o build de release Android.'
+spec:
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      steps:
+        - - name: github-pull
+            templateRef:
+              name: github-pull
+              template: main
+        - - name: android-assemble-release
+            templateRef:
+              name: android-assemble-release
+              template: main

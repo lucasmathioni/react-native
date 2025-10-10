@@ -1,7 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  namespace: argo
   name: react-native
 spec:
   clusterResourceWhitelist:
@@ -12,9 +11,6 @@ spec:
   destinations:
     - name: in-cluster
       namespace: ''
-      server: https://kubernetes.default.svc
-    - name: in-cluster
-      namespace: argo
       server: https://kubernetes.default.svc
     - name: in-cluster
       namespace: react-native

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: react-native-android-init-
+  annotations:
+    workflows.argoproj.io/title: 'React Native Android Init'
+    workflows.argoproj.io/description: 'Inicializa ambiente Android e limpa build artifacts.'
+spec:
+  serviceAccountName: manager
+  entrypoint: main
+  templates:
+    - name: main
+      steps:
+        - - name: android-init
+            templateRef:
+              name: android-init
+              template: main
+        - - name: android-clean
+            templateRef:
+              name: android-clean
+              template: main
