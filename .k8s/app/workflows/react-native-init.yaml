@@ -20,6 +20,10 @@ spec:
             templateRef:
               name: github-clone
               template: main
+            arguments:
+              parameters:
+                - name: repository-url
+                  value: '{{workflow.parameters.repository-url}}'
         - - name: yarn-install
             templateRef:
               name: yarn-install
